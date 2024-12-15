@@ -16,6 +16,9 @@ void main() async {
             '*Important Notice*\nHere are the notification details.\n• Item 1\n• Item 2'),
       ),
       DividerBlock(),
+      ActionsBlock(elements: [
+        ButtonElement(text: 'Jump to Google', url: 'https://google.com')
+      ]),
       ActionsBlock(
         elements: [
           ButtonElement(
