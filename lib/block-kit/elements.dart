@@ -10,7 +10,7 @@ class ButtonElement extends BlockElement {
 
   ButtonElement({
     required String text,
-    required this.value,
+    this.value,
     this.url,
     this.actionId,
     this.style,
@@ -21,7 +21,7 @@ class ButtonElement extends BlockElement {
   Map<String, dynamic> toJson() => {
         'type': type,
         'text': text.toJson(),
-        'value': value,
+        if (value != null) 'value': value,
         if (url != null) 'url': url,
         if (actionId != null) 'action_id': actionId,
         if (style != null) 'style': style,
