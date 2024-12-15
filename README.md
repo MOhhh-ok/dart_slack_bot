@@ -1,39 +1,67 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# Dart Slack Bot
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Can use some blocks
+- Only need Channel ID and Bot token.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```yml
+dependencies:
+  dart_slack_bot:
+    git: 
+      url: https://github.com/mohhh-ok/dart_slack_bot.git
+      ref: v0.0.1
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
+void main() async {
+  final botClient = SlackBotClient(
+    channelId: Env.slackChannelId,
+    botToken: Env.slackBotToken,
+  );
+
+  await botClient.sendMessage(
+    text: 'This is fallback text',
+    blocks: [
+      HeaderBlock(text: '🎉 New Notification'),
+      SectionBlock(
+        text: TextObject.mrkdwn(
+            '*Important Notice*\nHere are the notification details.\n• Item 1\n• Item 2'),
+      ),
+      DividerBlock(),
+      ActionsBlock(
+        elements: [
+          ButtonElement(
+            text: 'View Details',
+            value: 'view_details',
+            style: 'primary',
+          ),
+          StaticSelectElement(
+            placeholder: 'Select an option',
+            actionId: 'select_option',
+            options: [
+              Option(text: 'Option 1', value: 'opt1'),
+              Option(text: 'Option 2', value: 'opt2'),
+              Option(text: 'Option 3', value: 'opt3'),
+            ],
+          ),
+        ],
+      ),
+      ContextBlock(
+        elements: [
+          TextObject.mrkdwn(
+              'Last updated: <!date^1234567890^{date_num} {time_secs}|October 10, 2023>'),
+        ],
+      ),
+    ],
+  );
+}
 ```
 
-## Additional information
+## License
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+MIT

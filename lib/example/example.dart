@@ -2,12 +2,12 @@ import '../dart_slack_bot.dart';
 import '../env.dart';
 
 void main() async {
-  final slackClient = SlackBotClient(
+  final botClient = SlackBotClient(
     channelId: Env.slackChannelId,
     botToken: Env.slackBotToken,
   );
 
-  await slackClient.sendMessage(
+  await botClient.sendMessage(
     text: 'This is fallback text',
     blocks: [
       HeaderBlock(text: '🎉 New Notification'),
