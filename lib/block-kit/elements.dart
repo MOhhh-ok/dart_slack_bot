@@ -3,7 +3,7 @@ import 'objects.dart';
 
 class ButtonElement extends BlockElement {
   final TextObject text;
-  final String value;
+  final String? value;
   final String? url;
   final String? actionId;
   final String? style;
