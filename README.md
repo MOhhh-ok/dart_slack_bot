@@ -12,7 +12,7 @@ dependencies:
   dart_slack_bot:
     git: 
       url: https://github.com/mohhh-ok/dart_slack_bot.git
-      ref: v0.0.1
+      ref: v0.0.3
 ```
 
 ## Usage
